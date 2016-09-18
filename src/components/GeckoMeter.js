@@ -5,7 +5,7 @@ const width = 240;
 const height = width / 2;
 
 const styles = {
-  wrapper: { height },
+  wrapper: {},
   container: { width, height },
   background: {
     width,
@@ -24,12 +24,17 @@ const styles = {
     height,
     borderRadius: `${width}px ${width}px 0 0`,
   },
+  labels: {
+    width: width + 10,
+  }
 };
 const dataTurns = (min, max, val) => -.5 + .5 * val / (max - min);
 
 const GeckoMeter = ({ min, max, value, unit}) => {
   return(
     <article style={styles.wrapper} className="gom--wrapper">
+      <section>{unit}{value}</section>
+
       <section style={styles.container} className="gom--container">
         <section style={styles.background} className="gom--background"></section>
         <section style={styles.center} className="gom--center"></section>
@@ -38,6 +43,11 @@ const GeckoMeter = ({ min, max, value, unit}) => {
             transform: `rotate(${dataTurns(min, max, value)}turn)`
           })
         }></section>
+      </section>
+
+      <section style={styles.labels} className="gom--labels">
+        <article className="gom--labels_min">{min}</article>
+        <article className="gom--labels_max">{max}</article>
       </section>
     </article>
   )

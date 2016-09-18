@@ -1,13 +1,9 @@
-body {
-    color: #444;
-    font-family: Varela, Helvetica, Arial, sans-serif;
-    font-size: 24px;
-    font-weight: normal;
-    height: 32px;
-    letter-spacing: normal;
-    line-height: 32px;
-}
+html, body { height: 100% }
 
-p {
-    text-align: center;
+body {
+    color: #444444;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 31px;
+    font-weight: normal;
 }

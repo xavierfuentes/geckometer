@@ -1,14 +1,12 @@
 .gom--wrapper {
   position: relative;
+  text-align: center;
 }
 
 .gom--container {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  left: 50%;
+  position: relative;
   overflow: hidden;
-  text-align: center;
+  left: 50%;
   transform: translateX(-50%);
 }
 
@@ -34,4 +32,24 @@
   position: absolute;
   background-color: #fff;
   margin-right: auto;
+}
+
+.gom--labels {
+  position: relative;
+  display: flex;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gom--labels .gom--labels_min,
+.gom--labels .gom--labels_max {
+  flex: 1;
+}
+
+.gom--labels .gom--labels_min {
+  text-align: left;
+}
+
+.gom--labels .gom--labels_max {
+  text-align: right;
 }
