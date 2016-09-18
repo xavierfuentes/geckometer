@@ -1,16 +1,42 @@
 import React, { PropTypes } from 'react';
 import './GeckoMeter.css';
 
-const dataTurns = (max, val) => -.5 + .5 * val / max;
+const width = 240;
+const height = width / 2;
+
+const styles = {
+  wrapper: { height },
+  container: { width, height },
+  background: {
+    width,
+    height,
+    borderRadius: `${width}px ${width}px 0 0`,
+  },
+  center: {
+    width: width * .85,
+    height: height * .85,
+    top: height * .15,
+    marginLeft: height * .15,
+    borderRadius: `${width}px ${width}px 0 0`,
+  },
+  data: {
+    width,
+    height,
+    borderRadius: `${width}px ${width}px 0 0`,
+  },
+};
+const dataTurns = (min, max, val) => -.5 + .5 * val / (max - min);
 
 const GeckoMeter = ({ min, max, value, unit}) => {
   return(
-    <article className="gom--wrapper">
-      <section className="gom--container">
-        <section className="gom--background"></section>
-        <section className="gom--center"></section>
+    <article style={styles.wrapper} className="gom--wrapper">
+      <section style={styles.container} className="gom--container">
+        <section style={styles.background} className="gom--background"></section>
+        <section style={styles.center} className="gom--center"></section>
         <section className="gom--data" style={
-          {transform: `rotate(${dataTurns(max, value)}turn)`}
+          Object.assign({}, styles.data, {
+            transform: `rotate(${dataTurns(min, max, value)}turn)`
+          })
         }></section>
       </section>
     </article>

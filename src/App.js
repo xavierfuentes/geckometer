@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <GeckoMeter />
+        <GeckoMeter min={100} max={200} value={50}/>
       </div>
     );
   }

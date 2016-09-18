@@ -1,7 +1,5 @@
 .gom--wrapper {
   position: relative;
-
-  height: calc(120px + 3em);
 }
 
 .gom--container {
@@ -12,9 +10,6 @@
   overflow: hidden;
   text-align: center;
   transform: translateX(-50%);
-
-  width: 240px;
-  height: 120px;
 }
 
 .gom--background {
@@ -22,10 +17,6 @@
   position: absolute;
   background-color: #C0D3D3;
   top: 0;
-  border-radius: 300px 300px 0 0;
-
-  width: 240px;
-  height: 120px;
 }
 
 .gom--data {
@@ -34,12 +25,8 @@
   background-color: #007979;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 300px 300px 0 0;
   transform-origin: center bottom;
   transition: all 1s ease-in-out;
-
-  width: 240px;
-  height: 120px;
 }
 
 .gom--center {
@@ -47,10 +34,4 @@
   position: absolute;
   background-color: #fff;
   margin-right: auto;
-  border-radius: 300px 300px 0 0;
-
-  width: 144px;
-  height: 72px;
-  top: 48px;
-  margin-left: 48px;
 }
