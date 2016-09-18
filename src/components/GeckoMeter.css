@@ -34,6 +34,14 @@
   margin-right: auto;
 }
 
+.gom--needle {
+  z-index: 3;
+  background-color: #F77C15;
+  position: relative;
+  transform-origin: left center;
+  transition: all 1s ease-in-out;
+}
+
 .gom--labels {
   position: relative;
   display: flex;

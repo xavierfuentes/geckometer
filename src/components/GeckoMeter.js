@@ -3,6 +3,7 @@ import './GeckoMeter.css';
 
 const width = 240;
 const height = width / 2;
+const needle = 3;
 
 const styles = {
   wrapper: {},
@@ -13,16 +14,22 @@ const styles = {
     borderRadius: `${width}px ${width}px 0 0`,
   },
   center: {
-    width: width * .85,
-    height: height * .85,
-    top: height * .15,
-    marginLeft: height * .15,
+    width: width * .80,
+    height: height * .80,
+    top: height * .20,
+    marginLeft: height * .20,
     borderRadius: `${width}px ${width}px 0 0`,
   },
   data: {
     width,
     height,
     borderRadius: `${width}px ${width}px 0 0`,
+  },
+  needle: {
+    left: height,
+    top: height - needle,
+    width: height,
+    height: needle,
   },
   labels: {
     width: width + 10,
@@ -40,6 +47,11 @@ const GeckoMeter = ({ min, max, value, unit}) => {
         <section style={styles.center} className="gom--center"></section>
         <section className="gom--data" style={
           Object.assign({}, styles.data, {
+            transform: `rotate(${dataTurns(min, max, value)}turn)`
+          })
+        }></section>
+        <section className="gom--needle" style={
+          Object.assign({}, styles.needle, {
             transform: `rotate(${dataTurns(min, max, value)}turn)`
           })
         }></section>
