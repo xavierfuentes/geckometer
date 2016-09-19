@@ -48,7 +48,7 @@ const dataTurns = (min, max, val) => {
 const GeckoMeter = ({ min, max, value}) => {
   return(
     <article style={styles.wrapper} className="gom--wrapper">
-      <section>{toCurrency(value)}</section>
+      <h1>{toCurrency(value)}</h1>
 
       <section style={styles.container} className="gom--container">
         <section style={styles.background} className="gom--background"></section>
@@ -66,8 +66,8 @@ const GeckoMeter = ({ min, max, value}) => {
       </section>
 
       <section style={styles.labels} className="gom--labels">
-        <article className="gom--labels_min">{toCurrency(min)}</article>
-        <article className="gom--labels_max">{toCurrency(max)}</article>
+        <h3 className="gom--labels_min">{toCurrency(min)}</h3>
+        <h3 className="gom--labels_max">{toCurrency(max)}</h3>
       </section>
     </article>
   )

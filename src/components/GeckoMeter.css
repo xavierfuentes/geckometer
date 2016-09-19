@@ -52,6 +52,7 @@
 .gom--labels .gom--labels_min,
 .gom--labels .gom--labels_max {
   flex: 1;
+  margin: 0;
 }
 
 .gom--labels .gom--labels_min {
