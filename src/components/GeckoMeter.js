@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import './GeckoMeter.css';
 
 const width = 240; // in px
@@ -51,7 +51,6 @@ export const toCurrency = (val = 0, unit = null) => {
 
 // deals with the spinning necessary for the gauge data layer and needle
 export const rotation = (min, max, val) => {
-  let degrees;
   if (val <= min) return -180; // sets the rotation to "0%"
   if (val >= max) return 0; // sets the rotation to "100%"
   return (val - min) / (max - min) * -180;
