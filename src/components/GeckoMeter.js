@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import './GeckoMeter.css';
 
 const width = 240; // in px
@@ -38,7 +38,7 @@ const styles = {
 };
 
 // turns a value into a locale currency string
-const toCurrency = (val = 0, unit = null) => {
+export const toCurrency = (val = 0, unit = null) => {
   let opts = {};
   if (unit) opts = {
     style: 'currency',
@@ -46,16 +46,15 @@ const toCurrency = (val = 0, unit = null) => {
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
   }
-  return val.toLocaleString(navigator.language || 'en-US', opts);
+  return val.toLocaleString('en-US', opts);
 };
 
 // deals with the spinning necessary for the gauge data layer and needle
-const dataTurns = (min, max, val) => {
-  let turns;
-  if (val <= min) return -.5; // sets the rotation to "0%"
+export const rotation = (min, max, val) => {
+  let degrees;
+  if (val <= min) return -180; // sets the rotation to "0%"
   if (val >= max) return 0; // sets the rotation to "100%"
-  turns = -.5 + .5 * val / max;
-  return turns;
+  return (val - min) / (max - min) * -180;
 };
 
 const GeckoMeter = ({ min, max, value, unit}) => {
@@ -68,12 +67,12 @@ const GeckoMeter = ({ min, max, value, unit}) => {
         <section style={styles.center} className="gom--center"></section>
         <section className="gom--data" style={
           Object.assign({}, styles.data, {
-            transform: `rotate(${dataTurns(min, max, value)}turn)`
+            transform: `rotate(${rotation(min, max, value)}deg)`
           })
         }></section>
         <section className="gom--needle" style={
           Object.assign({}, styles.needle, {
-            transform: `rotate(${dataTurns(min, max, value)}turn)`
+            transform: `rotate(${rotation(min, max, value)}deg)`
           })
         }></section>
       </section>
@@ -104,11 +103,10 @@ GeckoMeter.defaultProps = {
 
 export default GeckoMeter;
 
-// todo: unit testing for dataTurns
+// todo: unit testing for rotation
 // todo: unit testing for toCurrency
 // todo: improve:
 //   - handle when max is lte min
-//   - turn calculator for a better use of min
 //   - handle other formats
 //   - E2E testing
 //   - use of color theming to change all the style
