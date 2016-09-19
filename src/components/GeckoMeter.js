@@ -35,12 +35,20 @@ const styles = {
     width: width + 10,
   }
 };
-const dataTurns = (min, max, val) => -.5 + .5 * val / (max - min);
 
-const GeckoMeter = ({ min, max, value, unit}) => {
+const toCurrency = (val, format, unit) => val.toLocaleString('en-GB', { style: format, currency: unit })
+const dataTurns = (min, max, val) => {
+  let turns;
+  if (val <= min) return -.5;
+  if (val >= max) return 0;
+  turns = -.5 + .5 * val / max;
+  return turns;
+};
+
+const GeckoMeter = ({ min, max, value}) => {
   return(
     <article style={styles.wrapper} className="gom--wrapper">
-      <section>{unit}{value}</section>
+      <section>{toCurrency(value)}</section>
 
       <section style={styles.container} className="gom--container">
         <section style={styles.background} className="gom--background"></section>
@@ -58,8 +66,8 @@ const GeckoMeter = ({ min, max, value, unit}) => {
       </section>
 
       <section style={styles.labels} className="gom--labels">
-        <article className="gom--labels_min">{min}</article>
-        <article className="gom--labels_max">{max}</article>
+        <article className="gom--labels_min">{toCurrency(min)}</article>
+        <article className="gom--labels_max">{toCurrency(max)}</article>
       </section>
     </article>
   )
@@ -67,16 +75,19 @@ const GeckoMeter = ({ min, max, value, unit}) => {
 
 GeckoMeter.propTypes = {
   min: PropTypes.number,
-  max: PropTypes.number,
-  value: PropTypes.number,
-  unit: PropTypes.string,
+  max: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
 }
 
 GeckoMeter.defaultProps = {
   min: 0,
-  max: 200,
-  value: 150,
-  unit: null,
+  max: 0,
+  value: 0,
 }
 
 export default GeckoMeter;
+
+// todo: edge cases handler:
+//   - when max is lte min
+// todo: improve the turn calculator for a better use of min
+// todo: unit testing for dataTurns
