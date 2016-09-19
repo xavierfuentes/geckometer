@@ -101,11 +101,3 @@ GeckoMeter.defaultProps = {
 }
 
 export default GeckoMeter;
-
-// todo: unit testing for rotation
-// todo: unit testing for toCurrency
-// todo: improve:
-//   - handle when max is lte min
-//   - handle other formats
-//   - E2E testing
-//   - use of color theming to change all the style

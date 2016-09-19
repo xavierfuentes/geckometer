@@ -32,6 +32,15 @@ npm install; npm start
 ```
 go to [http://localhost:3000/](http://localhost:3000/) and refresh to see different values
 
+### Improvements
+- todo: move data fetching to a Container Component
+- todo: tests for template and styling
+- todo: improve:
+  - handle when max is lte min
+  - handle other formats
+  - use of color theming to change all the style
+  - use of dynamic size
+
 ## Some pointers
 
 ### We don't expect you to complete this challenge

@@ -35,5 +35,3 @@ class App extends Component {
 }
 
 export default App;
-
-// todo: move data fetching to a Container Component
