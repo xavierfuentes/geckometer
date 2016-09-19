@@ -1,5 +1,4 @@
-Greetings Front-end hopeful.
-
+### Description
 We would like you to spend no more than 4 hours of happy fun time turning a payload like this:
 
 ```json
@@ -23,6 +22,15 @@ https://widgister.herokuapp.com/challenge/frontend
 or you can get the sample payload (as above) from:
 
 https://widgister.herokuapp.com/challenge/frontend?fixed=1
+
+### Get Started
+You will need NodeJS >= 6.5.0
+```
+git clone https://github.com/xavifuefer/geckometer.git
+cd geckometer
+npm install; npm start
+```
+go to (http://localhost:3000/)[http://localhost:3000/] and refresh to see different values
 
 ## Some pointers
 
