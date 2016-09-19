@@ -49,16 +49,12 @@
   transform: translateX(-50%);
 }
 
+.gom--labels_value {
+  margin: 0 0 5px;
+}
+
 .gom--labels .gom--labels_min,
 .gom--labels .gom--labels_max {
   flex: 1;
-  margin: 0;
-}
-
-.gom--labels .gom--labels_min {
-  text-align: left;
-}
-
-.gom--labels .gom--labels_max {
-  text-align: right;
+  margin: 5px 0 0;
 }

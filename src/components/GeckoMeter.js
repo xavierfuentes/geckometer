@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import './GeckoMeter.css';
 
-const width = 240;
+const width = 240; // in px
 const height = width / 2;
 const needle = 3;
 
+// Deals with the dynamic style properties
 const styles = {
   wrapper: {},
   container: { width, height },
@@ -32,23 +33,35 @@ const styles = {
     height: needle,
   },
   labels: {
-    width: width + 10,
+    width: width * 2 - 50,
   }
 };
 
-const toCurrency = (val, format, unit) => val.toLocaleString('en-GB', { style: format, currency: unit })
+// turns a value into a locale currency string
+const toCurrency = (val = 0, unit = null) => {
+  let opts = {};
+  if (unit) opts = {
+    style: 'currency',
+    currency: unit,
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }
+  return val.toLocaleString(navigator.language || 'en-US', opts);
+};
+
+// deals with the spinning necessary for the gauge data layer and needle
 const dataTurns = (min, max, val) => {
   let turns;
-  if (val <= min) return -.5;
-  if (val >= max) return 0;
+  if (val <= min) return -.5; // sets the rotation to "0%"
+  if (val >= max) return 0; // sets the rotation to "100%"
   turns = -.5 + .5 * val / max;
   return turns;
 };
 
-const GeckoMeter = ({ min, max, value}) => {
+const GeckoMeter = ({ min, max, value, unit}) => {
   return(
     <article style={styles.wrapper} className="gom--wrapper">
-      <h1>{toCurrency(value)}</h1>
+      <h1 className="gom--labels_value">{toCurrency(value, unit)}</h1>
 
       <section style={styles.container} className="gom--container">
         <section style={styles.background} className="gom--background"></section>
@@ -66,8 +79,8 @@ const GeckoMeter = ({ min, max, value}) => {
       </section>
 
       <section style={styles.labels} className="gom--labels">
-        <h3 className="gom--labels_min">{toCurrency(min)}</h3>
-        <h3 className="gom--labels_max">{toCurrency(max)}</h3>
+        <h3 className="gom--labels_min">{toCurrency(min, unit)}</h3>
+        <h3 className="gom--labels_max">{toCurrency(max, unit)}</h3>
       </section>
     </article>
   )
@@ -75,19 +88,27 @@ const GeckoMeter = ({ min, max, value}) => {
 
 GeckoMeter.propTypes = {
   min: PropTypes.number,
-  max: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
+  max: PropTypes.number,
+  value: PropTypes.number,
+  format: PropTypes.string,
+  unit: PropTypes.string,
 }
 
 GeckoMeter.defaultProps = {
   min: 0,
   max: 0,
   value: 0,
+  format: null,
+  unit: null,
 }
 
 export default GeckoMeter;
 
-// todo: edge cases handler:
-//   - when max is lte min
-// todo: improve the turn calculator for a better use of min
 // todo: unit testing for dataTurns
+// todo: unit testing for toCurrency
+// todo: improve:
+//   - handle when max is lte min
+//   - turn calculator for a better use of min
+//   - handle other formats
+//   - E2E testing
+//   - use of color theming to change all the style
