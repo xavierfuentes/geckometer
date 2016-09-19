@@ -30,7 +30,7 @@ git clone https://github.com/xavifuefer/geckometer.git
 cd geckometer
 npm install; npm start
 ```
-go to (http://localhost:3000/)[http://localhost:3000/] and refresh to see different values
+go to [http://localhost:3000/](http://localhost:3000/) and refresh to see different values
 
 ## Some pointers
 
