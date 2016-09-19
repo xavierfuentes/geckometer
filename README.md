@@ -32,14 +32,23 @@ npm install; npm start
 ```
 go to [http://localhost:3000/](http://localhost:3000/) and refresh to see different values
 
-### Improvements
-- todo: move data fetching to a Container Component
-- todo: tests for template and styling
-- todo: improve:
-  - handle when max is lte min
-  - handle other formats
-  - use of color theming to change all the style
-  - use of dynamic size
+### Features
+* [React](https://facebook.github.io/react/) -> Awesome and fast library to create interfaces
+* [create-react-app](https://github.com/facebookincubator/create-react-app) as a starter -> great starting point for small react apps with 0 config that includes:
+  * [webpack](https://webpack.github.io/) with [webpack-dev-server](https://github.com/webpack/webpack-dev-server), [html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin) and [style-loader](https://github.com/webpack/style-loader)
+  * [Babel](http://babeljs.io/) with ES6 and extensions used by Facebook (JSX, [object spread](https://github.com/sebmarkbage/ecmascript-rest-spread/commits/master), [class properties](https://github.com/jeffmo/es-class-public-fields))
+  * [Autoprefixer](https://github.com/postcss/autoprefixer)
+  * [ESLint](http://eslint.org/)
+  * [Jest](http://facebook.github.io/jest)
+
+### Future Improvements
+* todo: move data fetching to a Container Component
+* todo: tests for template and styling
+* todo: improve:
+  * handle when max is lte min
+  * handle other formats
+  * use of color theming to change all the style
+  * use of dynamic size
 
 ## Some pointers
 
