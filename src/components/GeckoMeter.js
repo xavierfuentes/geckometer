@@ -53,10 +53,10 @@ export const toCurrency = (val = 0, unit = null) => {
 export const rotation = (min, max, val) => {
   if (val <= min) return -180; // sets the rotation to "0%"
   if (val >= max) return 0; // sets the rotation to "100%"
-  return (val - min) / (max - min) * -180;
+  return -180 + ((val - min) / (max - min) * 180);
 };
 
-const GeckoMeter = ({ min, max, value, unit}) => {
+const GeckoMeter = ({ min, max, value, goal, unit}) => {
   return(
     <article style={styles.wrapper} className="gom--wrapper">
       <h1 className="gom--labels_value">{toCurrency(value, unit)}</h1>
@@ -69,6 +69,13 @@ const GeckoMeter = ({ min, max, value, unit}) => {
             transform: `rotate(${rotation(min, max, value)}deg)`
           })
         }></section>
+
+        <section className="gom--needle" style={
+          Object.assign({}, styles.needle, {
+            transform: `rotate(${rotation(min, max, goal)}deg)`
+          })
+        }></section>
+
         <section className="gom--needle" style={
           Object.assign({}, styles.needle, {
             transform: `rotate(${rotation(min, max, value)}deg)`

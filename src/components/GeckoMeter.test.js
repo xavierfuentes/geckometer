@@ -21,8 +21,11 @@ it('transforms a number into a local currency value', () => {
 
 it('calculates the rotation for the needle and the data mask', () => {
   expect(rotation(0, 100, 0)).toEqual(-180); // 100% completed
-  expect(rotation(0, 100, 25)).toEqual(-45); // 25% completed
+  expect(rotation(0, 100, 25)).toEqual(-135); // 25% completed
   expect(rotation(0, 100, 50)).toEqual(-90); // 50% completed
+  expect(rotation(0, 100, 100)).toEqual(0); // 0% completed
+  expect(rotation(4, 6, 5)).toEqual(-90);
+  expect(rotation(1, 5, 2)).toEqual(-135);
   expect(rotation(0, 100, 100)).toEqual(0); // 0% completed
   expect(rotation(100, 1000, 10)).toEqual(-180); // value is lesser than min
   expect(rotation(100, 1000, 10000)).toEqual(0); // value is greater than max

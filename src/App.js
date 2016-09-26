@@ -6,7 +6,8 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { min: 0, max: 0, value: 0 };
+    this.state = { min: 0, max: 0, value: 0, goal: 0 };
+    // this.handleInputChange = this.handleInputChange;
   }
 
   componentDidMount() {
@@ -21,13 +22,19 @@ class App extends Component {
     })
   }
 
+  handleInputChange(e) {
+    this.setState({goal: +e.target.value});
+  }
+
   render() {
     return (
       <div className="App">
+        <input onChange={this.handleInputChange.bind(this)}/>
         <GeckoMeter
           min={this.state.min}
           max={this.state.max}
           value={this.state.value}
+          goal={this.state.goal}
           unit={this.state.unit}/>
       </div>
     );
