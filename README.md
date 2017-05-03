@@ -1,4 +1,6 @@
 ### Description
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/xavifuefer/geckometer.svg)](https://greenkeeper.io/)
 We would like you to spend no more than 4 hours of happy fun time turning a payload like this:
 
 ```json
